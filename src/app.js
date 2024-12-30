@@ -5,19 +5,20 @@ import cors from "cors";
 
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://test-three-chi-98.vercel.app", // Especifica el origen que puede hacer peticiones a tu API
-    methods: ["GET", "POST", "PUT", "DELETE"], // Métodos HTTP permitidos
-    allowedHeaders: ["Content-Type", "Authorization"], // Encabezados permitidos
-  })
-);
+// Configura CORS para permitir solicitudes desde tu frontend en Vercel
+const corsOptions = {
+  origin: "https://test-three-chi-98.vercel.app", // Frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
+  allowedHeaders: ["Content-Type", "Authorization"], // Cabeceras permitidas
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/api", authRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
