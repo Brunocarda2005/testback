@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
 
-require("dotenv").config(); // Cargar las variables de entorno
+dotenv.config(); // Cargar las variables de entorno
 const mongoUrl = process.env.MONGO_URL;
 
 export const connectDB = async () => {
