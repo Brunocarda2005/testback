@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 
 dotenv.config(); // Cargar las variables de entorno
-const mongoUrl = process.env.MONGO_URL;
+const mongoUrl = "mongodb://127.0.0.1:27017/merndb";
 
 export const connectDB = async () => {
   try {
