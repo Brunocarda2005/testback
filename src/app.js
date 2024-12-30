@@ -6,13 +6,7 @@ import cors from "cors";
 const app = express();
 
 // Configura CORS para permitir solicitudes desde tu frontend en Vercel
-const corsOptions = {
-  origin: "https://test-three-chi-98.vercel.app", // Frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE"], // Métodos permitidos
-  allowedHeaders: ["Content-Type", "Authorization"], // Cabeceras permitidas
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 app.use(morgan("dev"));
