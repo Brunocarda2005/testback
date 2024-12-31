@@ -142,6 +142,20 @@ DELETE /task/123
 2. Incluye los parámetros y cuerpos de solicitud en formato JSON, como se muestra en los ejemplos.
 3. Verifica las respuestas y los códigos de estado para validar el funcionamiento correcto de la API.
 
+
+### Variables de entorno
+Development
+   ```
+   NODE_ENV=development nodemon src/index.js
+   MONGO_URI=mongodb://localhost/merndb
+   SWAGGER_SERVER_URL=http://localhost:4000/api
+   ```
+Production
+   ```
+   NODE_ENV=production node src/index.js
+   MONGO_URI=mongodb+srv://brunocardamone09:rH9PWa1orPNC1cDv@task.i10ex.mongodb.net/?retryWrites=true&w=majority&appName=Task
+   SWAGGER_SERVER_URL=https://testback-7onu.onrender.com/api
+   ```
 ---
 
 ## **Conclusión**
