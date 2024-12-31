@@ -1,8 +1,17 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import path from 'path';
 
-dotenv.config(); // Cargar las variables de entorno
-const mongoUrl = "mongodb://127.0.0.1:27017/merndb";
+// Cargar el archivo de entorno correcto según el valor de NODE_ENV
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+dotenv.config({ path: path.resolve(process.cwd(), envFile) });
+
+const mongoUrl = process.env.MONGO_URI;
+
+if (!mongoUrl) {
+  console.error("MONGO_URI is not defined in the .env file");
+  process.exit(1);
+}
 
 export const connectDB = async () => {
   try {
