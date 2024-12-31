@@ -2,14 +2,14 @@ import { validationResult } from "express-validator";
 import Task from "../models/task.model.js";
 
 export const getAll = async (req, res) => {
-  const { estado } = req.query; 
+  const { Estado } = req.query; 
   
   try {
-    const query = estado ? { Estado: estado } : {};
+    const query = Estado ? { Estado: Estado } : {};
     const tasks = await Task.find(query);
 
     if (!tasks.length) {
-      return res.status(404).json({ message: "No tasks found" });
+      return res.status(200).json({ message: "No tasks found" });
     }
 
     return res.status(200).json(tasks);
@@ -20,7 +20,6 @@ export const getAll = async (req, res) => {
 
 export const getTask = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   try {
     const task = await Task.findById(id);
     if (!task) {
@@ -35,7 +34,6 @@ export const getTask = async (req, res) => {
 export const add = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    console.log("Validation errors:", errors.array());
     return res.status(400).json({ errors: errors.array() });
   }
 
@@ -49,7 +47,6 @@ export const add = async (req, res) => {
     });
 
     await newTask.save();
-    console.log("Task saved successfully");
     return res.status(201).json(newTask);
   } catch (err) {
     return res.status(err);
