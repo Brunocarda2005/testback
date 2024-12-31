@@ -1,9 +1,4 @@
-# Proyecto Nombre
-
-Este es el proyecto testback. Puedes descargarlo y correrlo localmente para probarlo o desarrollarlo.
-
-Ten en cuenta que ambos proyectos, testback y test deben estar corriendo en simultaneo 
-
+# TestBack
 ## Requisitos
 
 Asegúrate de tener instalado lo siguiente:
